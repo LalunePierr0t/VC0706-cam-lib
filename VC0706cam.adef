@@ -1,0 +1,17 @@
+sandboxed: false
+
+executables:
+{
+    VC0706cam = ( VC0706CamClient )
+}
+
+processes:
+{
+    run:
+    {
+        ( VC0706cam )
+    }
+}
+
+start: auto
+
