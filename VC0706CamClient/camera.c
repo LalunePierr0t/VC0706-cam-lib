@@ -1,9 +1,46 @@
 #include "camera.h"
 #include "legato.h"
 #include <termios.h>
-#include "util.h"
 
-COMPONENT_INIT {}
+
+int fd_openSerial(char *devicename, speed_t speed)
+{
+    int fd;
+    struct termios term;
+    
+    fd = open(devicename, O_RDWR | O_NOCTTY | O_NDELAY);
+    if(fd == -1) {
+      LE_ERROR( "failed to open port\n" );
+    return EXIT_FAILURE;
+    }
+ 
+    if (tcgetattr(fd, &term) != 0) {
+        LE_ERROR("tcgetattr() error");
+        return EXIT_FAILURE;
+    }
+    else if (cfsetispeed(&term, speed) != 0) {
+        LE_ERROR("cfsetispeed() error");
+        return EXIT_FAILURE;
+    }
+    else if (tcsetattr(fd, TCSANOW, &term) != 0) {
+        LE_ERROR("tcsetattr() error");
+        return EXIT_FAILURE;
+    }
+    return fd;
+}
+
+bool fd_dataAvail(int fd, int *avail) {
+    bool dataVailable = false;
+    avail = NULL;
+    read(fd, avail, 1);
+    if(NULL != avail) {
+        dataVailable = true;
+    }
+    else {
+        dataVailable = false;
+    }
+    return dataVailable;
+}
 
 /**
  * Open a serial connection to the camera

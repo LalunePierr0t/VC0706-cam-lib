@@ -6,6 +6,6 @@ cflags:
 
 sources:
 {
-  camera.c
-  $BRNKL_ROOT/apps/util/util.c
+    camera.c
+    example.c
 }

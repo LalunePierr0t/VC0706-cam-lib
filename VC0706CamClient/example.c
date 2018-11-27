@@ -5,11 +5,13 @@
 #define RETRY_WAIT_SEC 60
 
 bool takePhoto(Camera* cam, char* dirPath) {
-  cam->fd = fd_openCam();
+   char imgPath[256];
+  cam->fd = fd_openCam(cam->devPath);
   bool resetSucess = cam_reset(cam);
   LE_INFO("Camera reset %s", resetSucess ? "succeeded" : "failed");
   LE_DEBUG("Taking photo...");
-  bool snapshotSuccess = cam_snapshotToFile(cam, dirPath, VC0706_640x480);
+  bool snapshotSuccess = cam_snapshotToFile(cam, dirPath, VC0706_640x480,imgPath);
+  
   LE_INFO("Snapshot %s", snapshotSuccess ? "succeeded" : "failed");
   fd_closeCam(cam->fd);
   return resetSucess && snapshotSuccess;
@@ -31,7 +33,7 @@ void photoLoop(Camera* cam, int intervalMintues, char* dirPath) {
 
 COMPONENT_INIT {
   Camera cam = {
-      .serialNum = 0x00, .bufferLen = 0, .frameptr = 0,
+      .devPath="/dev/ttyUSB0", .serialNum = 0x00, .bufferLen = 0, .frameptr = 0,
   };
   photoLoop(&cam, 10, "/home/root/sd");
 }

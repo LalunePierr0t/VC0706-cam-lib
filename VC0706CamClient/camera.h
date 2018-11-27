@@ -44,7 +44,7 @@
 #define CAM_BLOCK_SIZE 192
 #define CAM_DELAY 10
 #define CAM_SERIAL 0
-#define CAM_BAUD_RATE 38400
+#define CAM_BAUD_RATE B38400
 #define TTY_TIMEOUT 5000
 #define MAX_PATH_SIZE 256
 
