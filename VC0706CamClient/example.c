@@ -35,5 +35,5 @@ COMPONENT_INIT {
   Camera cam = {
       .devPath="/dev/ttyUSB0", .serialNum = 0x00, .bufferLen = 0, .frameptr = 0,
   };
-  photoLoop(&cam, 10, "/home/root/sd");
+  photoLoop(&cam, 10, "/tmp/");
 }
