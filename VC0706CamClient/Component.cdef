@@ -7,5 +7,5 @@ cflags:
 sources:
 {
     camera.c
-    example.c
+    camclient.c
 }
