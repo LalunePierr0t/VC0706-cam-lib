@@ -1,7 +1,6 @@
 cflags:
 {
   -std=c99
-  -I$BRNKL_ROOT/apps/util
 }
 
 sources:
