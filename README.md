@@ -18,8 +18,15 @@ products from Adafruit!
 Original code written by Limor Fried/Ladyada for Adafruit Industries.
 BSD license, all text above must be included in any redistribution
 
+Thks to https://github.com/brnkl/VC0706-cam-lib
+
 ## Releases
 
+### 1.0.4
+Released on November 30, 2018
+
+I wasn't able to use it, so I rewrite it 
+Note : Your camera must be configured in 115200 to work, you can do it with this [tool](https://cdn-shop.adafruit.com/datasheets/VC0706CommTool(EN)%20Setup%20V1-00.exe)
 ### 1.0.3
 Released on February 9, 2018
 
