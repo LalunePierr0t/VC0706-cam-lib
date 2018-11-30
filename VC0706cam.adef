@@ -11,6 +11,11 @@ processes:
     {
         ( VC0706cam )
     }
+    envVars:
+    {
+            LE_LOG_LEVEL = INFO
+    }
+
 }
 
 start: manual
